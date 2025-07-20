@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages/_app.tsx -> ../utils/db\":{\"id\":\"pages/_app.tsx -> ../utils/db\",\"files\":[]},\"pages/index.tsx -> ../utils/db\":{\"id\":\"pages/index.tsx -> ../utils/db\",\"files\":[]},\"pages/index.tsx -> ../utils/export\":{\"id\":\"pages/index.tsx -> ../utils/export\",\"files\":[\"static/chunks/utils_export_ts.js\"]}}"

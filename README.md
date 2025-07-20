@@ -1,1 +1,202 @@
-# Smart_Memories
+# Smart Memories PWA
+
+A complete offline-first Progressive Web App for capturing and preserving memories with your photos. Built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+### Core Functionality
+- **📸 Photo Upload**: Upload photos or capture new ones using device camera
+- **🎤 Voice Memories**: Record voice notes and attach them to photos
+- **✏️ Text Memories**: Write text memories for each photo
+- **🔒 Time Capsule**: Set future unlock dates for memories
+- **💾 Offline First**: All data stored locally using IndexedDB
+- **📱 PWA Support**: Installable app with offline caching
+
+### Enhanced Features
+- **🔐 Encryption**: Optional memory encryption using CryptoJS
+- **📤 Export/Import**: Backup and restore all data as JSON/ZIP files
+- **🌙 Dark Mode**: System-aware light/dark theme toggle
+- **📱 Responsive**: Works on all device sizes
+- **⚡ Performance**: Fast, optimized, and lightweight
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with TypeScript
+- **Styling**: Tailwind CSS
+- **PWA**: next-pwa for service worker and caching
+- **Storage**: IndexedDB via idb library
+- **Encryption**: CryptoJS
+- **Export**: JSZip for data export
+- **Audio**: Web MediaRecorder API
+- **Photos**: HTML5 File API with camera capture
+
+## Installation & Setup
+
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+2. **Development Server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000)
+
+3. **Production Build**
+   ```bash
+   npm run build
+   npm start
+   ```
+
+4. **PWA Installation**
+   - Open the app in a browser
+   - Look for the "Install" or "Add to Home Screen" option
+   - The app will work offline once installed
+
+## Project Structure
+
+```
+smart-memories-pwa/
+├── pages/
+│   ├── _app.tsx          # App wrapper with theme provider
+│   └── index.tsx         # Main memories interface
+├── contexts/
+│   └── ThemeContext.tsx  # Dark mode theme management
+├── utils/
+│   ├── db.ts            # IndexedDB operations
+│   └── export.ts        # Data export/import functionality
+├── public/
+│   └── manifest.json    # PWA manifest
+├── styles/
+│   └── globals.css      # Global styles with Tailwind
+└── Configuration files...
+```
+
+## Key Features Explained
+
+### Memory Storage
+Each memory contains:
+- Photo (stored as Blob in IndexedDB)
+- Optional text memory
+- Optional voice recording
+- Creation/update timestamps
+- Optional unlock date for time capsules
+- Encryption status
+
+### Time Capsules
+- Set a future date when creating a memory
+- Memory content is hidden until the unlock date
+- Photo remains visible, but text and audio are locked
+
+### Encryption
+- Optional AES encryption for text memories
+- User can set custom encryption key
+- Encrypted memories are marked and handled securely
+
+### Export/Import
+- Complete data backup as ZIP file
+- Contains JSON data file with base64-encoded media
+- Individual photo and audio files included
+- Full restore capability
+
+### Offline Support
+- Service worker caches all app resources
+- IndexedDB stores all user data locally
+- Works completely offline after initial load
+- Automatic updates when online
+
+## Usage Guide
+
+1. **Adding Memories**
+   - Click "Add New Memory" button
+   - Select or take a photo
+   - Add text memory (optional)
+   - Record voice memory (optional)
+   - Set time capsule date (optional)
+   - Save the memory
+
+2. **Viewing Memories**
+   - Click on any photo in the grid
+   - View full-size photo and all attached memories
+   - Play audio memories
+   - Time-locked memories show unlock date
+
+3. **Settings**
+   - Toggle dark/light mode
+   - Enable/disable encryption
+   - Export all data for backup
+   - Import previously exported data
+
+4. **Installation**
+   - Visit the app in Chrome/Safari/Edge
+   - Look for "Install" prompt or "Add to Home Screen"
+   - Enjoy native app experience
+
+## Browser Support
+
+- ✅ Chrome/Chromium 80+
+- ✅ Safari 14+
+- ✅ Firefox 78+
+- ✅ Edge 80+
+
+### Required APIs
+- IndexedDB (for storage)
+- MediaRecorder API (for voice recording)
+- File API (for photo upload)
+- Service Workers (for PWA functionality)
+- Web Crypto API (for encryption)
+
+## Security & Privacy
+
+- **100% Local Storage**: No data ever leaves your device
+- **No Cloud Services**: Everything stored locally in IndexedDB
+- **Optional Encryption**: Memories can be encrypted with user key
+- **No Analytics**: No tracking or data collection
+- **Open Source**: Complete transparency
+
+## Development Notes
+
+### Adding New Features
+1. Update the `Memory` interface in `utils/db.ts`
+2. Add UI components in the main page
+3. Update export/import functions if needed
+4. Test offline functionality
+
+### Database Schema
+The app uses two IndexedDB stores:
+- `memories`: Stores all memory data
+- `settings`: Stores app configuration
+
+### PWA Configuration
+- Manifest in `public/manifest.json`
+- Service worker generated by next-pwa
+- Caching strategy in `next.config.js`
+
+## Troubleshooting
+
+### Common Issues
+1. **Camera not working**: Check browser permissions
+2. **Audio recording fails**: Ensure microphone access
+3. **PWA won't install**: Try different browser or clear cache
+4. **Import fails**: Check JSON file format
+5. **Encryption errors**: Verify encryption key
+
+### Browser Console
+Check browser developer tools for detailed error messages.
+
+## License
+
+MIT License - Feel free to use and modify for your needs.
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Make changes
+4. Test thoroughly
+5. Submit pull request
+
+---
+
+**Smart Memories** - Capture today, cherish forever. 📸✨
